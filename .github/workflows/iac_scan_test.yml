@@ -2,6 +2,8 @@ name: scan with checkov
 
 on: 
   push:
+  workflow_call:
+  
 jobs: 
   checkov_scan:
     runs-on: ubuntu-latest
