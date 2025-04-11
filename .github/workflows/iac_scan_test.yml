@@ -1,0 +1,29 @@
+name: scan with checkov
+
+on: 
+  push:
+jobs: 
+  checkov_scan:
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: checkout custom policy repo
+        uses: actions/checkout@v4
+        with:
+          repository: melissa-commits/checkov_policy_ex
+          path: policies
+
+
+      - name: setup python
+        uses: actions/setup-python@v2
+        with: 
+          python-version: '3.x'
+
+      - name: install checkov
+        run: pip install checkov
+
+      - name: run scan
+        run: checkov -d . --external-checks-dir policies
