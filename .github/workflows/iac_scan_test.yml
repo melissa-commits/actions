@@ -2,8 +2,7 @@ name: scan with checkov
 permissions:
   actions: read
   contents: read
-  security-events: write  # ← REQUIRED to upload SARIF files
-
+  security-events: write  
 
 
 on: 
