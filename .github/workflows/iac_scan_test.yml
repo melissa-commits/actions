@@ -29,4 +29,10 @@ jobs:
         run: pip install checkov
 
       - name: run scan
-        run: checkov -d . --external-checks-dir policies
+        run: checkov -d . --external-checks-dir policies --output-file-path ./results.sarif -o sarif -o cli
+
+      - name: upload results
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: results.sarif
