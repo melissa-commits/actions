@@ -3,6 +3,7 @@ name: scan with checkov
 on: 
   push:
   workflow_call:
+  pull_request:
   
 jobs: 
   checkov_scan:
